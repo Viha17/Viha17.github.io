@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vihanga Anush · Full-stack developer</title>
+  <meta name="description" content="Vihanga Anush is a full-stack developer and Computer Science undergraduate in Sri Lanka, building EcoShift: edge-AI middleware that lightens a React UI before it stutters.">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta property="og:title" content="Vihanga Anush · Full-stack developer">
+  <meta property="og:description" content="Full-stack developer working on edge AI. EcoShift, selected work and contact.">
+  <meta property="og:url" content="https://viha17.github.io/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://viha17.github.io/">
+  <link rel="preload" href="fonts/general-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/general-sans-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%230b0b0c'/%3E%3Ccircle cx='12' cy='16' r='3' fill='%23ecebe6'/%3E%3Ccircle cx='21' cy='16' r='3' fill='%236a5cf6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <canvas class="swarm" id="swarm" aria-hidden="true"></canvas>
+
+  <header class="top">
+    <a class="top__name" href="#top">Vihanga Anush <i></i><i></i></a>
+    <span class="top__role">Full-stack developer · Edge AI</span>
+    <span class="top__status"><b></b>Building EcoShift</span>
+    <nav class="top__nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="sec hero" id="top" data-theme="dark" data-shape="device" aria-labelledby="hero-title">
+      <div class="hero__orb" data-anchor aria-hidden="true"></div>
+      <p class="hero__live" role="status">
+        <span class="hero__level"><b data-level-dot></b><span data-level>Measuring your device…</span></span>
+        <span class="hero__hint-short">Sheds detail when your device slows</span>
+        <span class="hero__hint">This drawing sheds detail when your device slows down, the idea behind EcoShift in miniature.</span>
+      </p>
+
+      <div class="hero__clock" aria-label="Local time in Homagama">
+        <span class="hero__city">Homagama <span class="mono" data-clock>--:--</span></span>
+        <span class="hero__offset" data-offset>Sri Lanka</span>
+      </div>
+
+      <div class="hero__copy">
+        <h1 id="hero-title" class="hero__title">Software that keeps up with the device it runs on.</h1>
+        <p class="hero__text">I'm Vihanga Anush, a full-stack developer and Computer Science undergraduate in Sri Lanka. Right now I'm building EcoShift: a model in the browser that lightens a React interface before it stutters.</p>
+        <div class="hero__cta">
+          <a class="pill pill--accent" href="#contact">Let's talk</a>
+          <a class="link-arrow" href="#ecoshift">See the work <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 5v7H5"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="sec about" id="about" data-theme="light" data-shape="chip" aria-labelledby="about-title">
+      <div class="row">
+        <h2 id="about-title" class="row__label">About me</h2>
+        <span class="row__note">Homagama, Sri Lanka · NSBM Green University</span>
+      </div>
+      <div class="about__body">
+        <p class="statement">Most of what I build lives under the interface: <strong>a model that notices a struggling device, the tools that collected its data, and a UI that steps down in time.</strong> I work across the stack too, from Flutter apps to ASP.NET back ends.</p>
+        <div class="about__mark" data-anchor aria-hidden="true"></div>
+      </div>
+      <ul class="stats">
+        <li><canvas class="dotnum" data-value="21" role="img" aria-label="21"></canvas><span class="stats__unit">repos</span><p>on GitHub, public and private</p></li>
+        <li><canvas class="dotnum" data-value="181" role="img" aria-label="181"></canvas><span class="stats__unit">commits</span><p>since October 2024</p></li>
+        <li><canvas class="dotnum" data-value="4" role="img" aria-label="4"></canvas><span class="stats__unit">live demos</span><p>you can open right now</p></li>
+        <li><canvas class="dotnum" data-value="6" role="img" aria-label="6"></canvas><span class="stats__unit">languages</span><p>TypeScript, JavaScript, C#, Dart, Python, HTML/CSS</p></li>
+      </ul>
+    </section>
+
+    <!-- EcoShift -->
+    <section class="sec eco" id="ecoshift" data-theme="dark" data-shape="graph" aria-labelledby="eco-title">
+      <div class="row">
+        <h2 id="eco-title" class="row__label">EcoShift</h2>
+        <span class="row__note">Final-year project · 2026</span>
+      </div>
+      <div class="eco__grid">
+        <div class="eco__copy">
+          <p class="display">A React UI that lightens itself before it stutters.</p>
+          <p class="eco__text">EcoShift reads how hard the visitor's device is working, using an ONNX model that runs in the browser, and steps the interface down when pressure rises. I demo it on AegisNet, a cloud DDoS-monitoring dashboard, and I built every stage of the pipeline behind it.</p>
+          <div class="eco__links">
+            <a class="pill pill--accent" href="https://ecoshift-psi.vercel.app" target="_blank" rel="noopener">Open the live demo <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+            <a class="pill" href="https://ecoshift-recorder-v2.vercel.app" target="_blank" rel="noopener">Recorder v2</a>
+            <a class="pill" href="https://ecoshift-telemetry-engine.vercel.app" target="_blank" rel="noopener">Telemetry engine</a>
+          </div>
+        </div>
+        <div class="eco__graph" data-anchor aria-hidden="true"><span class="node" data-node="0">Recorder</span><span class="node" data-node="1">Engine</span><span class="node" data-node="2">Model</span><span class="node" data-node="3">Middleware</span><span class="node" data-node="4">Website</span></div>
+      </div>
+
+      <div class="stages" role="tablist" aria-label="EcoShift pipeline stages">
+        <button class="stage" role="tab" aria-selected="true" data-stage="0">
+          <span class="stage__n">01</span><span class="stage__name">Recorder</span>
+          <span class="stage__desc">Loads every CPU core with Web Workers, measures real downloads with Resource Timing, labels each second with PressureObserver.</span>
+        </button>
+        <button class="stage" role="tab" aria-selected="false" data-stage="1">
+          <span class="stage__n">02</span><span class="stage__name">Engine</span>
+          <span class="stage__desc">Runs the recording sessions and gathers the signals into a training dataset.</span>
+        </button>
+        <button class="stage" role="tab" aria-selected="false" data-stage="2">
+          <span class="stage__n">03</span><span class="stage__name">Model</span>
+          <span class="stage__desc">Predicts device pressure from those signals, shipped as an ONNX file small enough for the browser.</span>
+        </button>
+        <button class="stage" role="tab" aria-selected="false" data-stage="3">
+          <span class="stage__n">04</span><span class="stage__name">Middleware</span>
+          <span class="stage__desc">Runs the model client-side with ONNX Runtime Web and degrades the AegisNet dashboard as pressure rises.</span>
+        </button>
+        <button class="stage" role="tab" aria-selected="false" data-stage="4">
+          <span class="stage__n">05</span><span class="stage__name">Website</span>
+          <span class="stage__desc">The SDK's landing page, built with Next.js and Framer Motion, with the demo embedded as a sandbox.</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="sec work" id="work" data-theme="light" data-shape="field" aria-labelledby="work-title">
+      <div class="row">
+        <h2 id="work-title" class="row__label">Selected work</h2>
+        <span class="row__note">Coursework, team and side projects</span>
+      </div>
+
+      <ol class="projects">
+        <li class="project">
+          <span class="project__n">Mobile app</span>
+          <h3 class="project__title">Open-Scout</h3>
+          <div class="project__meta">
+            <span>Flutter · Dart · BLoC/Cubit · Dio · 2026</span>
+            <p>A local-first app for getting into open source. It tracks your own developer stats and scouts "good first issue" tasks from the GitHub REST API, with GitHub OAuth sign-in.</p>
+            <span class="project__private">Private repo</span>
+          </div>
+        </li>
+        <li class="project">
+          <span class="project__n">Web app</span>
+          <h3 class="project__title">Blind Match PAS</h3>
+          <div class="project__meta">
+            <span>ASP.NET Core MVC · C# · EF Core · 2026</span>
+            <p>A project allocation system: students submit proposals, supervisors are matched by research area within their quotas, then both sides get messaging and milestones.</p>
+            <a class="link-arrow" href="https://github.com/Viha17/Blind-Mathces-PAS" target="_blank" rel="noopener">Source <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+          </div>
+        </li>
+        <li class="project">
+          <span class="project__n">Desktop app</span>
+          <h3 class="project__title">SmartEdu System</h3>
+          <div class="project__meta">
+            <span>C# · WinForms · SQL Server · 2025</span>
+            <p>A desktop student management system, later extended with a chatbot.</p>
+            <span class="project__private">Private repo</span>
+          </div>
+        </li>
+        <li class="project">
+          <span class="project__n">Group project</span>
+          <h3 class="project__title">MindLink</h3>
+          <div class="project__meta">
+            <span>2025</span>
+            <p>A learning-media application meant to pull teenagers away from social-media addiction.</p>
+            <a class="link-arrow" href="https://github.com/Viha17/MindLink---Group-Project" target="_blank" rel="noopener">Repo <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+          </div>
+        </li>
+        <li class="project">
+          <span class="project__n">Web app</span>
+          <h3 class="project__title">SDTP-02</h3>
+          <div class="project__meta">
+            <span>Node.js · Express · 2026</span>
+            <p>A Node and Express web app built for a university team module.</p>
+            <a class="link-arrow" href="https://github.com/Viha17/SDTP-02" target="_blank" rel="noopener">Source <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+          </div>
+        </li>
+      </ol>
+
+      <p class="early">Where it started, November 2024:
+        <a href="https://viha17.github.io/SnakeGame.github.io/" target="_blank" rel="noopener">Snake game</a>,
+        <a href="https://github.com/Viha17/Unitconverter.github.io" target="_blank" rel="noopener">unit converter</a> and
+        <a href="https://github.com/Viha17/Qr-generator" target="_blank" rel="noopener">QR generator</a>.
+      </p>
+    </section>
+
+    <!-- Toolkit -->
+    <section class="sec toolkit" id="toolkit" data-theme="light" data-shape="none" aria-labelledby="tool-title">
+      <div class="row">
+        <h2 id="tool-title" class="row__label">Toolkit</h2>
+        <span class="row__note">What I reach for</span>
+      </div>
+      <div class="tools">
+        <div class="tool"><h3>Languages</h3><p>TypeScript, JavaScript, C#, Dart, Python, HTML, CSS</p></div>
+        <div class="tool"><h3>Front end</h3><p>React, Next.js, Vite, Tailwind CSS, Framer Motion</p></div>
+        <div class="tool"><h3>Back end &amp; data</h3><p>ASP.NET Core MVC, Entity Framework Core, Node.js, Express, SQL Server</p></div>
+        <div class="tool"><h3>Mobile &amp; desktop</h3><p>Flutter with BLoC/Cubit, Windows Forms, Tkinter</p></div>
+        <div class="tool"><h3>In the browser</h3><p>ONNX Runtime Web, Web Workers, PressureObserver, Performance APIs</p></div>
+        <div class="tool"><h3>Tools</h3><p>Git, GitHub, Vercel, VS Code, Chrome DevTools</p></div>
+      </div>
+      <p class="toolkit__next">Next on the list: IoT and cloud computing.</p>
+    </section>
+
+    <!-- Contact -->
+    <section class="sec contact" id="contact" data-theme="dark" data-shape="ring" aria-labelledby="contact-title">
+      <div class="row">
+        <h2 id="contact-title" class="row__label">Contact</h2>
+        <span class="row__note">Homagama <span class="mono" data-clock>--:--</span></span>
+      </div>
+      <div class="contact__grid">
+        <p class="contact__big">Got a role, a project or a question? Let's talk.</p>
+        <a class="circle" href="mailto:anushvihanga17@gmail.com" data-anchor>
+          <span>Email me</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="contact__pills">
+        <span class="pill pill--split">
+          <a href="mailto:anushvihanga17@gmail.com">anushvihanga17@gmail.com</a>
+          <button type="button" id="copy-email" data-email="anushvihanga17@gmail.com">Copy</button>
+        </span>
+        <a class="pill" href="https://www.linkedin.com/in/vihanga-anush-2b68a8312/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="pill" href="https://github.com/Viha17" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <footer class="foot">
+        <div><span>Local time</span><p><span class="mono" data-clock>--:--</span> in Homagama</p></div>
+        <div><span>Studying</span><p>Computer Science, NSBM Green University</p></div>
+        <div><span>Elsewhere</span><p><a href="https://github.com/Viha17" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/vihanga-anush-2b68a8312/" target="_blank" rel="noopener">LinkedIn</a></p></div>
+        <div><span>Built with</span><p>HTML, CSS, JavaScript and one canvas</p></div>
+      </footer>
+    </section>
+  </main>
+
+  <nav class="dock" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#ecoshift">EcoShift</a>
+    <a href="#work">Work</a>
+    <a href="#toolkit">Toolkit</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

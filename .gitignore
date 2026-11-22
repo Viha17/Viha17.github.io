@@ -1,0 +1,19 @@
+# Local design tooling and notes (not part of the site)
+.claude/
+.impeccable/
+archive/
+PRODUCT.md
+DESIGN.md
+linkedin.md
+
+# Personal documents: add deliberately if you want them public
+*.pdf
+
+# Unused font from the first version
+fonts/bricolage.woff2
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
