@@ -41,8 +41,8 @@
         <span class="hero__hint">This drawing sheds detail when your device slows down, the idea behind EcoShift in miniature.</span>
       </p>
 
-      <div class="hero__clock" aria-label="Local time in Homagama">
-        <span class="hero__city">Homagama <span class="mono" data-clock>--:--</span></span>
+      <div class="hero__clock" aria-label="Local time in Gampaha">
+        <span class="hero__city">Gampaha <span class="mono" data-clock>--:--</span></span>
         <span class="hero__offset" data-offset>Sri Lanka</span>
       </div>
 
@@ -60,15 +60,15 @@
     <section class="sec about" id="about" data-theme="light" data-shape="chip" aria-labelledby="about-title">
       <div class="row">
         <h2 id="about-title" class="row__label">About me</h2>
-        <span class="row__note">Homagama, Sri Lanka · NSBM Green University</span>
+        <span class="row__note">Gampaha, Sri Lanka · BSc (Hons) Computer Science, University of Plymouth at NSBM</span>
       </div>
       <div class="about__body">
         <p class="statement">Most of what I build lives under the interface: <strong>a model that notices a struggling device, the tools that collected its data, and a UI that steps down in time.</strong> I work across the stack too, from Flutter apps to ASP.NET back ends.</p>
         <div class="about__mark" data-anchor aria-hidden="true"></div>
       </div>
       <ul class="stats">
-        <li><canvas class="dotnum" data-value="21" role="img" aria-label="21"></canvas><span class="stats__unit">repos</span><p>on GitHub, public and private</p></li>
-        <li><canvas class="dotnum" data-value="181" role="img" aria-label="181"></canvas><span class="stats__unit">commits</span><p>since October 2024</p></li>
+        <li><canvas class="dotnum" data-value="1k+" role="img" aria-label="1,000+"></canvas><span class="stats__unit">daily transactions</span><p>on the restaurant POS I co-built</p></li>
+        <li><canvas class="dotnum" data-value="5" role="img" aria-label="5"></canvas><span class="stats__unit">stages</span><p>in the EcoShift pipeline, all built by me</p></li>
         <li><canvas class="dotnum" data-value="4" role="img" aria-label="4"></canvas><span class="stats__unit">live demos</span><p>you can open right now</p></li>
         <li><canvas class="dotnum" data-value="6" role="img" aria-label="6"></canvas><span class="stats__unit">languages</span><p>TypeScript, JavaScript, C#, Dart, Python, HTML/CSS</p></li>
       </ul>
@@ -87,7 +87,6 @@
           <div class="eco__links">
             <a class="pill pill--accent" href="https://ecoshift-psi.vercel.app" target="_blank" rel="noopener">Open the live demo <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
             <a class="pill" href="https://ecoshift-recorder-v2.vercel.app" target="_blank" rel="noopener">Recorder v2</a>
-            <a class="pill" href="https://ecoshift-telemetry-engine.vercel.app" target="_blank" rel="noopener">Telemetry engine</a>
           </div>
         </div>
         <div class="eco__graph" data-anchor aria-hidden="true"><span class="node" data-node="0">Recorder</span><span class="node" data-node="1">Engine</span><span class="node" data-node="2">Model</span><span class="node" data-node="3">Middleware</span><span class="node" data-node="4">Website</span></div>
@@ -115,16 +114,36 @@
           <span class="stage__desc">The SDK's landing page, built with Next.js and Framer Motion, with the demo embedded as a sandbox.</span>
         </button>
       </div>
+
+      <div class="shots">
+        <a class="shot shot--wide" href="https://ecoshift-psi.vercel.app" target="_blank" rel="noopener">
+          <img src="assets/ecoshift-demo.webp" width="1200" height="750" loading="lazy" alt="EcoShift running on the AegisNet dashboard: power metrics, a live sync map, a transaction ledger and the EcoShift DevTools panel showing the ONNX model and its input features">
+          <span>AegisNet dashboard with EcoShift DevTools open. The model's 25 input features are listed on the right.</span>
+        </a>
+        <a class="shot" href="https://ecoshift-recorder-v2.vercel.app" target="_blank" rel="noopener">
+          <img src="assets/recorder.webp" width="1000" height="640" loading="lazy" alt="EcoShift Recorder v2 showing FPS, memory, DOM elements, measured network, event-loop lag and the current pressure label">
+          <span>Recorder v2: one labelled row of telemetry per second.</span>
+        </a>
+      </div>
     </section>
 
     <!-- Work -->
     <section class="sec work" id="work" data-theme="light" data-shape="field" aria-labelledby="work-title">
       <div class="row">
         <h2 id="work-title" class="row__label">Selected work</h2>
-        <span class="row__note">Coursework, team and side projects</span>
+        <span class="row__note">Client, team, coursework and side projects</span>
       </div>
 
       <ol class="projects">
+        <li class="project">
+          <span class="project__n">Team · client</span>
+          <h3 class="project__title">NIMAKA Foods POS</h3>
+          <div class="project__meta">
+            <span>Next.js · React · TypeScript · Supabase · Express · 2026</span>
+            <p>A restaurant management system and point of sale, built with Varg Solutions for a business processing 1,000+ transactions a day. Concurrency-safe orders, real-time inventory and financial reporting, automated receipts. I'm the top contributor to its codebase.</p>
+            <span class="project__private">Client project, private repo</span>
+          </div>
+        </li>
         <li class="project">
           <span class="project__n">Mobile app</span>
           <h3 class="project__title">Open-Scout</h3>
@@ -156,8 +175,8 @@
           <span class="project__n">Group project</span>
           <h3 class="project__title">MindLink</h3>
           <div class="project__meta">
-            <span>2025</span>
-            <p>A learning-media application meant to pull teenagers away from social-media addiction.</p>
+            <span>Flutter · Lead mobile developer · 2025</span>
+            <p>A cross-platform learning app meant to pull teenagers away from social-media addiction. I led the mobile build: secure communication, responsive UI and state management tuned for Android and iOS.</p>
             <a class="link-arrow" href="https://github.com/Viha17/MindLink---Group-Project" target="_blank" rel="noopener">Repo <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
           </div>
         </li>
@@ -188,10 +207,10 @@
       <div class="tools">
         <div class="tool"><h3>Languages</h3><p>TypeScript, JavaScript, C#, Dart, Python, HTML, CSS</p></div>
         <div class="tool"><h3>Front end</h3><p>React, Next.js, Vite, Tailwind CSS, Framer Motion</p></div>
-        <div class="tool"><h3>Back end &amp; data</h3><p>ASP.NET Core MVC, Entity Framework Core, Node.js, Express, SQL Server</p></div>
+        <div class="tool"><h3>Back end &amp; data</h3><p>Supabase (PostgreSQL), Firebase, ASP.NET Core MVC, Entity Framework Core, Node.js, Express, SQL Server</p></div>
         <div class="tool"><h3>Mobile &amp; desktop</h3><p>Flutter with BLoC/Cubit, Windows Forms, Tkinter</p></div>
-        <div class="tool"><h3>In the browser</h3><p>ONNX Runtime Web, Web Workers, PressureObserver, Performance APIs</p></div>
-        <div class="tool"><h3>Tools</h3><p>Git, GitHub, Vercel, VS Code, Chrome DevTools</p></div>
+        <div class="tool"><h3>AI &amp; the browser</h3><p>ONNX Runtime Web, Gemini API, Web Workers, PressureObserver, Performance APIs</p></div>
+        <div class="tool"><h3>Practices &amp; tools</h3><p>Clean Architecture, OAuth, Git, GitHub, Vercel, Chrome DevTools</p></div>
       </div>
       <p class="toolkit__next">Next on the list: IoT and cloud computing.</p>
     </section>
@@ -200,7 +219,7 @@
     <section class="sec contact" id="contact" data-theme="dark" data-shape="ring" aria-labelledby="contact-title">
       <div class="row">
         <h2 id="contact-title" class="row__label">Contact</h2>
-        <span class="row__note">Homagama <span class="mono" data-clock>--:--</span></span>
+        <span class="row__note">Gampaha <span class="mono" data-clock>--:--</span></span>
       </div>
       <div class="contact__grid">
         <p class="contact__big">Got a role, a project or a question? Let's talk.</p>
@@ -216,11 +235,12 @@
         </span>
         <a class="pill" href="https://www.linkedin.com/in/vihanga-anush-2b68a8312/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="pill" href="https://github.com/Viha17" target="_blank" rel="noopener">GitHub</a>
+        <a class="pill" href="assets/Vihanga-Anush-CV.pdf" download>Download CV <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v8M4 7l4 4 4-4M3 13h10"/></svg></a>
       </div>
 
       <footer class="foot">
-        <div><span>Local time</span><p><span class="mono" data-clock>--:--</span> in Homagama</p></div>
-        <div><span>Studying</span><p>Computer Science, NSBM Green University</p></div>
+        <div><span>Local time</span><p><span class="mono" data-clock>--:--</span> in Gampaha</p></div>
+        <div><span>Studying</span><p>BSc (Hons) Computer Science, University of Plymouth, taught at NSBM Green University</p></div>
         <div><span>Elsewhere</span><p><a href="https://github.com/Viha17" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/vihanga-anush-2b68a8312/" target="_blank" rel="noopener">LinkedIn</a></p></div>
         <div><span>Built with</span><p>HTML, CSS, JavaScript and one canvas</p></div>
       </footer>
