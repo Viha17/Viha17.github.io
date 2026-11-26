@@ -14,7 +14,7 @@
   const ctx = canvas.getContext("2d");
   let W = 0, H = 0, DPR = 1;
   const mobile = () => window.innerWidth < 860;
-  const N = mobile() ? 1300 : 2400;
+  const N = mobile() ? 800 : 2400;
 
   const P = new Float32Array(N * 6); // x, y, vx, vy, k(spring), size
   const tx = new Float32Array(N), ty = new Float32Array(N), ta = new Float32Array(N);
@@ -37,7 +37,7 @@
   const pointer = { x: -9999, y: -9999 };
 
   function resize() {
-    DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+    DPR = Math.min(window.devicePixelRatio || 1, mobile() ? 1 : 1.5);
     W = window.innerWidth; H = window.innerHeight;
     canvas.width = W * DPR; canvas.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
@@ -184,6 +184,30 @@
   }
   const keepHash = new Float32Array(N).map((_, i) => ((i * 2654435761) % 1000) / 1000);
 
+  /* ---- Work: a mark per project, drawn when the visitor points at it ---- */
+  let activeMarkEl = null; const markCache = new Map();
+  function buildMark(name, s) {
+    const p = [];
+    const line = (x1, y1, x2, y2, st = 2.4) => { const L = Math.hypot(x2 - x1, y2 - y1); for (let d = 0; d <= L; d += st) p.push([x1 + (x2 - x1) * d / L, y1 + (y2 - y1) * d / L]); };
+    const arc = (cx, cy, r, a0 = 0, a1 = TAU, st = 2.4) => { for (let a = a0; a <= a1; a += st / r) p.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); };
+    const box = (x, y, w, h, st) => { line(x, y, x + w, y, st); line(x + w, y, x + w, y + h, st); line(x + w, y + h, x, y + h, st); line(x, y + h, x, y, st); };
+    const u = s / 10;
+    switch (name) {
+      case "receipt": {
+        line(2 * u, u, 8 * u, u); line(2 * u, u, 2 * u, 8.6 * u); line(8 * u, u, 8 * u, 8.6 * u);
+        for (let k = 0; k < 6; k++) { const x = 2 * u + k * u; line(x, 8.6 * u, x + 0.5 * u, 9.2 * u); line(x + 0.5 * u, 9.2 * u, x + u, 8.6 * u); }
+        [2.6, 3.8, 5, 6.2].forEach((y, i) => line(3 * u, y * u, (i === 3 ? 5 : 7) * u, y * u, 3));
+        line(5.6 * u, 7.4 * u, 7 * u, 7.4 * u, 2); break;
+      }
+      case "scout": { arc(4.2 * u, 4.2 * u, 2.8 * u); arc(4.2 * u, 4.2 * u, 1.6 * u, Math.PI * 1.1, Math.PI * 1.6, 3); line(6.3 * u, 6.3 * u, 9 * u, 9 * u, 2); line(6.6 * u, 6 * u, 9.3 * u, 8.7 * u, 2); break; }
+      case "match": { arc(3.5 * u, 5 * u, 2.4 * u); arc(6.5 * u, 5 * u, 2.4 * u); arc(3.5 * u, 4.2 * u, 0.7 * u); arc(6.5 * u, 4.2 * u, 0.7 * u); arc(3.5 * u, 6.6 * u, 1.1 * u, Math.PI * 1.05, Math.PI * 1.95, 2.6); arc(6.5 * u, 6.6 * u, 1.1 * u, Math.PI * 1.05, Math.PI * 1.95, 2.6); break; }
+      case "cap": { line(5 * u, 2 * u, 9.4 * u, 4 * u); line(9.4 * u, 4 * u, 5 * u, 6 * u); line(5 * u, 6 * u, 0.6 * u, 4 * u); line(0.6 * u, 4 * u, 5 * u, 2 * u); line(2.6 * u, 5 * u, 2.6 * u, 7.6 * u); line(7.4 * u, 5 * u, 7.4 * u, 7.6 * u); arc(5 * u, 7.6 * u, 2.4 * u, 0, Math.PI, 2.6); line(9.4 * u, 4 * u, 9.4 * u, 7 * u, 2); arc(9.4 * u, 7.3 * u, 0.3 * u); break; }
+      case "phone": { box(3 * u, 0.8 * u, 4 * u, 8.4 * u, 2.4); line(4.4 * u, 1.6 * u, 5.6 * u, 1.6 * u, 2); arc(5 * u, 8.4 * u, 0.35 * u); for (let y = 3; y <= 6.6; y += 1.2) line(3.7 * u, y * u, (y % 2.4 < 1 ? 6.3 : 5.3) * u, y * u, 3); break; }
+      case "server": { [1.2, 4.1, 7].forEach((y) => { box(1.6 * u, y * u, 6.8 * u, 2.2 * u, 2.4); arc(2.8 * u, (y + 1.1) * u, 0.35 * u); line(5 * u, (y + 1.1) * u, 7.4 * u, (y + 1.1) * u, 3); }); break; }
+    }
+    return p;
+  }
+
   function anchorRect() {
     if (!anchorEl) return { left: 0, top: 0, width: W, height: H };
     return anchorEl.getBoundingClientRect();
@@ -279,7 +303,15 @@
           const x = W / 2 + ((col / (cols - 1)) - 0.5) * W * spread;
           const wave = reduce ? 0 : Math.sin(col * 0.11 + t * 0.0012 + row * 0.5) * (6 + z * 16);
           tx[i] = x; ty[i] = top + Math.pow(z, 1.6) * depth + wave;
-          ta[i] = (0.12 + z * 0.55) * dim; grp[i] = -1;
+          ta[i] = (0.12 + z * 0.55) * dim * (activeMarkEl ? 0.45 : 1); grp[i] = -1;
+        }
+        if (activeMarkEl) {
+          const mr = activeMarkEl.getBoundingClientRect(), ms = Math.min(mr.width, mr.height);
+          const key = activeMarkEl.dataset.mark + ":" + Math.round(ms);
+          if (!markCache.has(key)) markCache.set(key, buildMark(activeMarkEl.dataset.mark, ms));
+          const pts = markCache.get(key), ox = mr.left + (mr.width - ms) / 2, oy = mr.top + (mr.height - ms) / 2;
+          const bob = reduce ? 0 : Math.sin(t * 0.002) * 2;
+          for (let k = 0; k < pts.length && k < N; k++) { const i = N - 1 - k; tx[i] = ox + pts[k][0]; ty[i] = oy + pts[k][1] + bob; ta[i] = 0.9; }
         }
         break;
       }
@@ -344,8 +376,14 @@
       const cap = shape === "graph" ? 1.3 : 9;
       for (const i of list) { const o = i * 6, s = Math.min(P[o + 5], cap); ctx.fillRect(P[o] - s / 2, P[o + 1] - s / 2, s, s); }
     }
-    if (!reduce) requestAnimationFrame(frame);
+    if (reduce) return;
+    if (document.hidden) { paused = true; return; }
+    let idle = shape === "none";
+    if (idle) for (let i = 0; i < N; i += 7) if (alpha[i] > 0.02) { idle = false; break; }
+    if (idle) setTimeout(() => requestAnimationFrame(frame), 300); else requestAnimationFrame(frame);
   }
+  let paused = false;
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && paused) { paused = false; requestAnimationFrame(frame); } });
 
   function setSection(sec) {
     const s = sec.dataset.shape || "none";
@@ -379,6 +417,27 @@
   if (document.fonts) document.fonts.ready.then(() => { graphPts = null; });
   requestAnimationFrame(frame);
 
+  /* ---- Work marks: hover or focus on desktop, centred row on touch screens ---- */
+  const projects = $$(".project");
+  const canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (canHover) {
+    projects.forEach((p) => {
+      const m = p.querySelector(".project__mark");
+      p.addEventListener("mouseenter", () => (activeMarkEl = m));
+      p.addEventListener("mouseleave", () => { if (activeMarkEl === m) activeMarkEl = null; });
+      p.addEventListener("focusin", () => (activeMarkEl = m));
+      p.addEventListener("focusout", () => { if (activeMarkEl === m) activeMarkEl = null; });
+    });
+  } else {
+    const pickProject = () => {
+      if (!current || current.id !== "work") { activeMarkEl = null; return; }
+      const mid = H * 0.45; let hit = null;
+      for (const p of projects) { const r = p.getBoundingClientRect(); if (r.top <= mid && r.bottom > mid) { hit = p; break; } }
+      activeMarkEl = hit ? hit.querySelector(".project__mark") : null;
+    };
+    window.addEventListener("scroll", pickProject, { passive: true });
+  }
+
   /* =========================================================
      EcoShift stages: auto-advance until the visitor picks one
      ========================================================= */
@@ -390,7 +449,7 @@
   function pickStage(i, fromUser) {
     activeNode = i;
     nodeEls.forEach((el, j) => el.classList.toggle("is-active", i === j));
-    stages.forEach((s, j) => { s.setAttribute("aria-selected", String(i === j)); s.tabIndex = i === j ? 0 : -1; });
+    stages.forEach((s, j) => { s.setAttribute("aria-pressed", String(i === j)); });
     if (fromUser) { userPicked = true; eco.classList.add("is-paused"); clearInterval(stageTimer); }
   }
   stages.forEach((s, i) => {
@@ -410,7 +469,7 @@
       if (en.isIntersecting && !userPicked) {
         stageTimer = setInterval(() => {
           const n = (activeNode + 1) % stages.length;
-          stages.forEach((s) => s.setAttribute("aria-selected", "false"));
+          stages.forEach((s) => s.setAttribute("aria-pressed", "false"));
           void eco.offsetWidth; // restart the fill animation
           pickStage(n, false);
         }, STAGE_MS);
@@ -494,4 +553,18 @@
     catch { copy.textContent = "Select and copy"; }
     setTimeout(() => (copy.textContent = "Copy"), 2000);
   });
+})();
+
+/* Top bar: hide while scrolling down, return on scroll up or near the top */
+(() => {
+  const top = document.querySelector(".top");
+  if (!top) return;
+  let lastY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    if (y < 120 || y < lastY - 4) top.classList.remove("is-away");
+    else if (y > lastY + 4) top.classList.add("is-away");
+    lastY = y;
+  }, { passive: true });
+  top.addEventListener("focusin", () => top.classList.remove("is-away"));
 })();

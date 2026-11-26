@@ -157,20 +157,20 @@ p { text-wrap: pretty; }
   position: relative; transition: color .4s var(--ease);
 }
 .stage::before { content: ""; position: absolute; left: 0; top: -1px; height: 2px; width: 100%; background: var(--fg); transform: scaleX(0); transform-origin: left; }
-.stage[aria-selected="true"] { color: var(--fg); }
-.stage[aria-selected="true"]::before { animation: fill var(--stage-ms, 5200ms) linear forwards; }
-.eco.is-paused .stage[aria-selected="true"]::before { animation: none; transform: scaleX(1); }
+.stage[aria-pressed="true"] { color: var(--fg); }
+.stage[aria-pressed="true"]::before { animation: fill var(--stage-ms, 5200ms) linear forwards; }
+.eco.is-paused .stage[aria-pressed="true"]::before { animation: none; transform: scaleX(1); }
 @keyframes fill { to { transform: scaleX(1); } }
 .stage:hover { color: var(--fg-2); }
 .stage__n { font-family: var(--mono); font-size: .75rem; }
 .stage__name { font-size: clamp(1.15rem, 1.6vw, 1.5rem); font-weight: 600; letter-spacing: -0.02em; }
 .stage__desc { font-size: .9rem; line-height: 1.45; color: inherit; }
-.stage:not([aria-selected="true"]) .stage__desc { opacity: 1; }
+.stage:not([aria-pressed="true"]) .stage__desc { opacity: 1; }
 
 /* Work */
 .projects { margin: 0; padding: 0; list-style: none; }
 .project {
-  display: grid; grid-template-columns: 6rem minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px 40px; align-items: start;
+  display: grid; grid-template-columns: 6rem minmax(0, 1.5fr) clamp(96px, 9vw, 140px) minmax(0, 1fr); gap: 16px 40px; align-items: start;
   padding: clamp(28px, 3.4vw, 44px) 0;
   border-top: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
 }
@@ -252,7 +252,7 @@ p { text-wrap: pretty; }
   .stats__unit { display: block; margin: 8px 0 0; }
   .eco__grid { grid-template-columns: 1fr; min-height: 0; }
   .eco__graph { height: 360px; order: -1; }
-  .project { grid-template-columns: 1fr; gap: 12px; }
+  .project { grid-template-columns: 1fr; gap: 12px; position: relative; }
   .project__n { padding-top: 0; }
   .tools { grid-template-columns: 1fr 1fr; }
   .contact__grid { grid-template-columns: 1fr; }
@@ -263,7 +263,7 @@ p { text-wrap: pretty; }
   .top__nav { gap: 18px; }
   .stages { grid-template-columns: 1fr; gap: 0; }
   .stage { padding-block: 16px; }
-  .stage:not([aria-selected="true"]) .stage__desc { display: none; }
+  .stage:not([aria-pressed="true"]) .stage__desc { display: none; }
   .tools { grid-template-columns: 1fr; gap: 32px; }
   .row { flex-direction: column; gap: 6px; }
   .row__note { text-align: left; }
@@ -314,3 +314,22 @@ p { text-wrap: pretty; }
 .shot:hover img { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 60%, transparent); }
 .shot:hover span { color: var(--fg); }
 @media (max-width: 860px) { .shots { grid-template-columns: 1fr; } }
+
+/* ---------- Work marks (drawn by the swarm) ---------- */
+.project__mark { aspect-ratio: 1; width: 100%; align-self: center; }
+.project { position: relative; }
+@media (max-width: 860px) {
+  .project__mark { position: absolute; right: 0; top: clamp(24px, 4vw, 40px); width: 64px; }
+  .project__title { padding-right: 76px; }
+}
+
+/* ---------- Back to top ---------- */
+.to-top { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; color: var(--fg); font-weight: 500; text-decoration: none; }
+.to-top svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s var(--ease); }
+.to-top:hover svg { transform: translateY(-2px); }
+.dock a:focus-visible { outline-offset: 1px; }
+
+/* ---------- Top bar steps aside while reading ---------- */
+html { scroll-padding-top: 72px; }
+.top { transition: transform .45s var(--ease); }
+.top.is-away { transform: translateY(-110%); }

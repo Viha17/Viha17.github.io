@@ -92,24 +92,24 @@
         <div class="eco__graph" data-anchor aria-hidden="true"><span class="node" data-node="0">Recorder</span><span class="node" data-node="1">Engine</span><span class="node" data-node="2">Model</span><span class="node" data-node="3">Middleware</span><span class="node" data-node="4">Website</span></div>
       </div>
 
-      <div class="stages" role="tablist" aria-label="EcoShift pipeline stages">
-        <button class="stage" role="tab" aria-selected="true" data-stage="0">
+      <div class="stages" role="group" aria-label="EcoShift pipeline stages">
+        <button class="stage" aria-pressed="true" data-stage="0">
           <span class="stage__n">01</span><span class="stage__name">Recorder</span>
           <span class="stage__desc">Loads every CPU core with Web Workers, measures real downloads with Resource Timing, labels each second with PressureObserver.</span>
         </button>
-        <button class="stage" role="tab" aria-selected="false" data-stage="1">
+        <button class="stage" aria-pressed="false" data-stage="1">
           <span class="stage__n">02</span><span class="stage__name">Engine</span>
           <span class="stage__desc">Runs the recording sessions and gathers the signals into a training dataset.</span>
         </button>
-        <button class="stage" role="tab" aria-selected="false" data-stage="2">
+        <button class="stage" aria-pressed="false" data-stage="2">
           <span class="stage__n">03</span><span class="stage__name">Model</span>
           <span class="stage__desc">Predicts device pressure from those signals, shipped as an ONNX file small enough for the browser.</span>
         </button>
-        <button class="stage" role="tab" aria-selected="false" data-stage="3">
+        <button class="stage" aria-pressed="false" data-stage="3">
           <span class="stage__n">04</span><span class="stage__name">Middleware</span>
           <span class="stage__desc">Runs the model client-side with ONNX Runtime Web and degrades the AegisNet dashboard as pressure rises.</span>
         </button>
-        <button class="stage" role="tab" aria-selected="false" data-stage="4">
+        <button class="stage" aria-pressed="false" data-stage="4">
           <span class="stage__n">05</span><span class="stage__name">Website</span>
           <span class="stage__desc">The SDK's landing page, built with Next.js and Framer Motion, with the demo embedded as a sandbox.</span>
         </button>
@@ -138,6 +138,7 @@
         <li class="project">
           <span class="project__n">Team · client</span>
           <h3 class="project__title">NIMAKA Foods POS</h3>
+          <div class="project__mark" data-mark="receipt" aria-hidden="true"></div>
           <div class="project__meta">
             <span>Next.js · React · TypeScript · Supabase · Express · 2026</span>
             <p>A restaurant management system and point of sale, built with Varg Solutions for a business processing 1,000+ transactions a day. Concurrency-safe orders, real-time inventory and financial reporting, automated receipts. I'm the top contributor to its codebase.</p>
@@ -147,6 +148,7 @@
         <li class="project">
           <span class="project__n">Mobile app</span>
           <h3 class="project__title">Open-Scout</h3>
+          <div class="project__mark" data-mark="scout" aria-hidden="true"></div>
           <div class="project__meta">
             <span>Flutter · Dart · BLoC/Cubit · Dio · 2026</span>
             <p>A local-first app for getting into open source. It tracks your own developer stats and scouts "good first issue" tasks from the GitHub REST API, with GitHub OAuth sign-in.</p>
@@ -156,6 +158,7 @@
         <li class="project">
           <span class="project__n">Web app</span>
           <h3 class="project__title">Blind Match PAS</h3>
+          <div class="project__mark" data-mark="match" aria-hidden="true"></div>
           <div class="project__meta">
             <span>ASP.NET Core MVC · C# · EF Core · 2026</span>
             <p>A project allocation system: students submit proposals, supervisors are matched by research area within their quotas, then both sides get messaging and milestones.</p>
@@ -165,6 +168,7 @@
         <li class="project">
           <span class="project__n">Desktop app</span>
           <h3 class="project__title">SmartEdu System</h3>
+          <div class="project__mark" data-mark="cap" aria-hidden="true"></div>
           <div class="project__meta">
             <span>C# · WinForms · SQL Server · 2025</span>
             <p>A desktop student management system, later extended with a chatbot.</p>
@@ -174,6 +178,7 @@
         <li class="project">
           <span class="project__n">Group project</span>
           <h3 class="project__title">MindLink</h3>
+          <div class="project__mark" data-mark="phone" aria-hidden="true"></div>
           <div class="project__meta">
             <span>Flutter · Lead mobile developer · 2025</span>
             <p>A cross-platform learning app meant to pull teenagers away from social-media addiction. I led the mobile build: secure communication, responsive UI and state management tuned for Android and iOS.</p>
@@ -183,6 +188,7 @@
         <li class="project">
           <span class="project__n">Web app</span>
           <h3 class="project__title">SDTP-02</h3>
+          <div class="project__mark" data-mark="server" aria-hidden="true"></div>
           <div class="project__meta">
             <span>Node.js · Express · 2026</span>
             <p>A Node and Express web app built for a university team module.</p>
@@ -242,7 +248,7 @@
         <div><span>Local time</span><p><span class="mono" data-clock>--:--</span> in Gampaha</p></div>
         <div><span>Studying</span><p>BSc (Hons) Computer Science, University of Plymouth, taught at NSBM Green University</p></div>
         <div><span>Elsewhere</span><p><a href="https://github.com/Viha17" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/vihanga-anush-2b68a8312/" target="_blank" rel="noopener">LinkedIn</a></p></div>
-        <div><span>Built with</span><p>HTML, CSS, JavaScript and one canvas</p></div>
+        <div><span>Built with</span><p>HTML, CSS, JavaScript and one canvas</p><p><a class="to-top" href="#top">Back to top <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4"/></svg></a></p></div>
       </footer>
     </section>
   </main>
